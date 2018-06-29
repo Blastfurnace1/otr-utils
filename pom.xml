@@ -43,8 +43,7 @@
              	<server.port.addr>9000</server.port.addr>
         		<management.server.port.addr>9001</management.server.port.addr>
         		<management.server.address.ip>127.0.0.1</management.server.address.ip>
-				<log.path>C:/temp/</log.path>
-				<log.file>UtilData.log</log.file>
+				<log.file>${project.basedir}/log/UtilData.log</log.file>
             	<datasource.url>jdbc:mysql://localhost:3306/otr_mp3</datasource.url>
 				<datasource.username>otr</datasource.username>
 				<datasource.password>otr</datasource.password>
