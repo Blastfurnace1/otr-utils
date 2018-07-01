@@ -5,8 +5,11 @@
 
     <groupId>com.blastfurnace</groupId>
     <artifactId>otr-utils</artifactId>
+    <packaging>jar</packaging>
     <version>0.1.0</version>
-
+	<name>otr-utils</name>
+	<url>http://localhost:8081/artifactory/libs-release-local</url>
+	
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -94,6 +97,7 @@
     		<activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
+            
             <properties>
             	<packaging>jar</packaging>
             	<maven.test.skip>true</maven.test.skip>
