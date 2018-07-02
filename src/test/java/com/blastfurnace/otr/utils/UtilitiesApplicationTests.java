@@ -17,7 +17,7 @@ package com.blastfurnace.otr.utils;
 
 import org.junit.Test;
 
-import com.blastfurnace.otr.TestingAppConfig;
+import com.blastfurnace.otr.testing.TestingAppConfig;
 
 
 /**

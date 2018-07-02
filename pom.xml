@@ -6,7 +6,7 @@
     <groupId>com.blastfurnace</groupId>
     <artifactId>otr-utils</artifactId>
     <packaging>jar</packaging>
-    <version>0.1.0</version>
+    <version>0.3.0</version>
 	<name>otr-utils</name>
 	<url>http://localhost:8081/artifactory/libs-release-local</url>
 	
@@ -156,7 +156,6 @@
 				<configuration>
 				  <!-- DO NOT include log4j.properties file in your Jar -->
 				  <excludes>
-					<exclude>**/test/*</exclude>
 					<exclude>**com/blastfurnace/otr/Application.class*</exclude>
 					<exclude>**/resources/*</exclude>
 					<exclude>**/lib/*</exclude>

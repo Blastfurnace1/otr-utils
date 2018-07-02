@@ -1,4 +1,4 @@
-package com.blastfurnace.otr;
+package com.blastfurnace.otr.testing;
 
 import static org.assertj.core.api.BDDAssertions.then;
 
