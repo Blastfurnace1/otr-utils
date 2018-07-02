@@ -39,7 +39,7 @@
     	<profile>
     		<id>dev</id>
     		<activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
             	<activatedProperties>dev</activatedProperties>
@@ -95,7 +95,7 @@
     	<profile>
     		<id>release</id>
     		<activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
             
             <properties>
@@ -149,7 +149,6 @@
 		    </dependencies>
 		    
             <build>
-            	<finalName>${project.name}</finalName>
     			<plugins>
         		<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
