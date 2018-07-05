@@ -15,6 +15,13 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.2.RELEASE</version>
     </parent>
+    
+    <distributionManagement>
+    	<repository>
+    		<id>blastfurnace</id>
+    		<url>http://10.0.0.134:8085/artifactory/libs-release-local</url>
+		</repository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>
@@ -189,7 +196,7 @@
 				  <execution>
 				  	<id>Jar Tests Package</id>
 				  	<configuration>
-				  	<finalName>${project.artifactId}-test-${project.version}</finalName>
+				  	<classifier>test</classifier>
 				  	</configuration>
 				  	<phase>package</phase>
 					<goals>
@@ -198,7 +205,6 @@
   					</execution>
   					</executions>
 				</plugin>
-
         		</plugins>
     		</build>
     	</profile>
