@@ -2,6 +2,8 @@ package com.blastfurnace.otr.util;
 
 import java.util.List;
 
+// TODOD: Refactor when working on file classifier classes
+/** This has more to do with file names. */
 public class StringUtils {
 
 	/** Characters that are not accepted. */

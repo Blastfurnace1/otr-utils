@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.blastfurnace.otr.data.ATypicalDataService;
-import com.blastfurnace.otr.rest.request.QueryData;
 import com.blastfurnace.otr.service.payload.PayloadWithCount;
-import com.blastfurnace.otr.service.response.GenericResponse;
+import com.blastfurnace.otr.service.request.QueryData;
+import com.blastfurnace.otr.service.response.GenericServiceResponse;
 import com.blastfurnace.otr.util.reflection.FieldProperties;
 import com.blastfurnace.otr.util.reflection.ObjectData;
 import com.blastfurnace.otr.util.reflection.Utils;
@@ -28,9 +28,9 @@ public class GenericService<T> {
 		this.fieldDefinitions = fieldDefinitions;
 	}
 
-	public GenericResponse<List<Map<String,Object>>> query(QueryData qry, ATypicalDataService<T> service) {
+	public GenericServiceResponse<List<Map<String,Object>>> query(QueryData qry, ATypicalDataService<T> service) {
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
-		GenericResponse<List<Map<String,Object>>> response = new GenericResponse<List<Map<String,Object>>>(list);
+		GenericServiceResponse<List<Map<String,Object>>> response = new GenericServiceResponse<List<Map<String,Object>>>(list);
 		try {
 			String[] columns = Utils.getFields(qry);
 
@@ -72,10 +72,10 @@ public class GenericService<T> {
 		return response;
 	}
 
-	public GenericResponse<PayloadWithCount<List<Map<String,Object>>>> queryWithCount(QueryData qry, ATypicalDataService<T> service) {
+	public GenericServiceResponse<PayloadWithCount<List<Map<String,Object>>>> queryWithCount(QueryData qry, ATypicalDataService<T> service) {
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
 		PayloadWithCount<List<Map<String,Object>>> payload = new PayloadWithCount<List<Map<String,Object>>>(list,0l);
-		GenericResponse<PayloadWithCount<List<Map<String,Object>>>> response = new GenericResponse<PayloadWithCount<List<Map<String,Object>>>>(payload);
+		GenericServiceResponse<PayloadWithCount<List<Map<String,Object>>>> response = new GenericServiceResponse<PayloadWithCount<List<Map<String,Object>>>>(payload);
 		try {
 			String[] columns = Utils.getFields(qry);
 
@@ -109,9 +109,8 @@ public class GenericService<T> {
 				response.getPayload().setPayload(list);
 			}
 			
-			GenericResponse<Long> count = getResultsCount(qry, service);
+			GenericServiceResponse<Long> count = getResultsCount(qry, service);
 			if (count.getErrorOccured() || count.getStatus() != 0) {
-				response.updateGenericResponse(count);
 				response.getPayload().setResultsCount(-1l);
 			} else {
 				response.getPayload().setResultsCount(count.getPayload());
@@ -126,8 +125,8 @@ public class GenericService<T> {
 		return response;
 	}
 	
-	public GenericResponse<T> get(Long id, ATypicalDataService<T> service) {
-		GenericResponse<T> response = new GenericResponse<T>(null);
+	public GenericServiceResponse<T> get(Long id, ATypicalDataService<T> service) {
+		GenericServiceResponse<T> response = new GenericServiceResponse<T>(null);
 		try {
 			T data = service.get(id);
 			response.setPayload(data);
@@ -148,8 +147,8 @@ public class GenericService<T> {
 	}
 
 	
-	public GenericResponse<Long> getResultsCount(QueryData qry, ATypicalDataService<T> service) {
-		GenericResponse<Long> response = new GenericResponse<Long>(null);
+	public GenericServiceResponse<Long> getResultsCount(QueryData qry, ATypicalDataService<T> service) {
+		GenericServiceResponse<Long> response = new GenericServiceResponse<Long>(null);
 		try {
 			Long count = service.getResultsCount(qry);
 			response.setPayload(count);
@@ -167,9 +166,9 @@ public class GenericService<T> {
 		return response;
 	}
 
-	public GenericResponse<String> delete(Long id, ATypicalDataService<T> service) {
+	public GenericServiceResponse<String> delete(Long id, ATypicalDataService<T> service) {
 
-		GenericResponse<String> response = new GenericResponse<String>("");
+		GenericServiceResponse<String> response = new GenericServiceResponse<String>("");
 		try {
 			service.delete(id);
 		} catch (Exception e) {
@@ -182,9 +181,9 @@ public class GenericService<T> {
 		return response;
 	}
 
-	public GenericResponse<T> save(T data, ATypicalDataService<T> service) {
+	public GenericServiceResponse<T> save(T data, ATypicalDataService<T> service) {
 		 
-		GenericResponse<T> response = new GenericResponse<T>(null);
+		GenericServiceResponse<T> response = new GenericServiceResponse<T>(null);
 		if (data == null) {
 			response.setStatus(-50l);
 			response.setMessage("Unable to save Record - nothing to save");

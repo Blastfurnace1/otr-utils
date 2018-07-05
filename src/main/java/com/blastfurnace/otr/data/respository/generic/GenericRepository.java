@@ -8,7 +8,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import com.blastfurnace.otr.rest.request.QueryData;
+import com.blastfurnace.otr.service.request.QueryData;
 import com.blastfurnace.otr.util.reflection.FieldProperties;
 
 /** Create a custom query for JPA using input values from a map and the object properties. */

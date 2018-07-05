@@ -1,6 +1,6 @@
 package com.blastfurnace.otr.data;
 
-import com.blastfurnace.otr.rest.request.QueryData;
+import com.blastfurnace.otr.service.request.QueryData;
 
 public interface ATypicalDataService<T> {
 

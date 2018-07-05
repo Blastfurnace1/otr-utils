@@ -5,10 +5,12 @@ import java.io.File;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/** open and dump a zip file contents. */
 public class ZipFileUtils {
 
 	private static final Logger log = LoggerFactory.getLogger(ZipFileUtils.class);  
 
+	// TODO: externalize this. also need to create a command line class again.
 	/** E:/winzip/winzip32 -min -e " + inFileName + " " + destination. */
 	private static final String COMMAND = "c:/winzip/winzip32 -min -e -o ";
 	

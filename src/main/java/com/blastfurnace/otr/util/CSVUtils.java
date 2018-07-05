@@ -8,6 +8,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.blastfurnace.otr.util.reflection.FieldProperties;
 
+// TODO Will this work. Neeed to externalize separator.
 public class CSVUtils {
 
 	private static Log log = LogFactory.getLog(CSVUtils.class);

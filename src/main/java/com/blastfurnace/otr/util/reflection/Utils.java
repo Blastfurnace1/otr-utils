@@ -4,9 +4,15 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.blastfurnace.otr.rest.request.QueryData;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.blastfurnace.otr.service.request.QueryData;
 
 public class Utils {
+	
+	private static final Logger log = LoggerFactory.getLogger(Utils.class);
+	
 	public static List<FieldProperties> getFieldNames(Object obj) {
 		List<FieldProperties> fields = new ArrayList<>();
 		Field[] allFields = obj.getClass().getDeclaredFields();
@@ -48,6 +54,6 @@ public class Utils {
 			}
 		}
 		return false;
-		
 	}
+	
 }

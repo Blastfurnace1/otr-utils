@@ -6,7 +6,7 @@
     <groupId>com.blastfurnace</groupId>
     <artifactId>otr-utils</artifactId>
     <packaging>jar</packaging>
-    <version>0.3.0</version>
+    <version>0.4.0</version>
 	<name>otr-utils</name>
 	<url>http://localhost:8081/artifactory/libs-release-local</url>
 	
@@ -25,15 +25,13 @@
 		</dependency>
     </dependencies>
 
-
     <properties>
         <java.version>1.8</java.version>  
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <const.megabyte>1048576</const.megabyte>
+        <app.version>@project.version@</app.version>
+        <service.ping.response.ok>STATUS OK</service.ping.response.ok>
     </properties>
-    
-   
     
     <profiles>
     	<profile>
@@ -51,6 +49,7 @@
 				<datasource.username>otr</datasource.username>
 				<datasource.password>otr</datasource.password>
 				<hibernate.ddl>none</hibernate.ddl>	
+				
 			</properties>
 			<dependencies>
         		<dependency>
@@ -77,14 +76,17 @@
 					<scope>runtime</scope>
 				</dependency>
 		    </dependencies>
+		          
             <build>
-    			<resources>
-        			<resource>
-            			<directory>src/main/resources</directory>
-            			<filtering>true</filtering>
-        			</resource>
-    			</resources>
+    		<resources>
+      <resource>
+        <directory>src/test/resources</directory>
+      <filtering>true</filtering>
+      </resource>
+    </resources>
         		<plugins>
+        		
+        		
             		<plugin>
                 		<groupId>org.springframework.boot</groupId>
                 		<artifactId>spring-boot-maven-plugin</artifactId>
@@ -92,6 +94,7 @@
         		</plugins>
     		</build>
     	</profile>
+    	
     	<profile>
     		<id>release</id>
     		<activation>
@@ -100,7 +103,8 @@
             
             <properties>
             	<packaging>jar</packaging>
-            	<maven.test.skip>true</maven.test.skip>
+            	<maven.test.skip>false</maven.test.skip>
+            	<maven.test.skip.exec>true</maven.test.skip.exec>
             	<deploy.dir>C:/wildfly-12.0.0.Final/standalone/deployments/</deploy.dir>
             	<activatedProperties>release</activatedProperties>
 				<log.path>C:/wildfly-12.0.0.Final/standalone/log/</log.path>
@@ -150,6 +154,17 @@
 		    
             <build>
     			<plugins>
+    			<plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-resources-plugin</artifactId>
+	<version>2.7</version>
+	<configuration>
+		<delimiters>
+			<delimiter>@</delimiter>
+		</delimiters>
+		<useDefaultDelimiters>false</useDefaultDelimiters>
+	</configuration>
+</plugin>
         		<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
@@ -170,7 +185,19 @@
 					</manifest>
 				  </archive>
 				</configuration>
-			</plugin>
+				  <executions>
+				  <execution>
+				  	<id>Jar Tests Package</id>
+				  	<configuration>
+				  	<finalName>${project.artifactId}-test-${project.version}</finalName>
+				  	</configuration>
+				  	<phase>package</phase>
+					<goals>
+						<goal>test-jar</goal>
+  					</goals>
+  					</execution>
+  					</executions>
+				</plugin>
 
         		</plugins>
     		</build>

@@ -1,4 +1,4 @@
-package com.blastfurnace.otr.servlet;
+package com.blastfurnace.otr.util.servlet;
 
 import java.io.File;
 import java.io.FileInputStream;
