@@ -121,14 +121,14 @@ public class UtilitiesApplicationTest extends AppConfigTest {
 	@Test
 	/** Test Utilities Objects. */
 	public void shouldPerformActions() throws Exception {
-		log.info("Running Utils tests");
+		log.info("Utilities Tests - Start");
+		
 		
 		testGenericRestResponse();
 		testPingServlet();
 		testLogServlet();
 		testQueryData();
 		
-		log.info("Utils tests Complete");
-		
+		log.info("Utilities Tests - End");
 	}
 }
